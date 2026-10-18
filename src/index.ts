@@ -56,6 +56,18 @@ bot.catch((error) => {
   console.error("Error inside handler:", error);
 });
 
+import http from "http";
+
+const port = process.env.PORT || 3000;
+http
+  .createServer((req, res) => {
+    res.writeHead(200);
+    res.end("Bot is running!");
+  })
+  .listen(port, () => {
+    console.log(`Dummy server listening on port ${port}`);
+  });
+
 bot.start().catch((error) => {
   console.error("Failed to start the bot:", error);
 });
